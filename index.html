@@ -31,10 +31,10 @@
 	            mapTypeId: google.maps.MapTypeId.ROADMAP,
 	            styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
 	        }
-	        var mapElement = document.getElementById('MAPMarieClaire');
+	        var mapElement = document.getElementById('MAPtest');
 	        var map = new google.maps.Map(mapElement, mapOptions);
 	        var locations = [
-	['Palace 114', 'Hotel de charme', '+33143434343', 'mickmick54@gmail.com', 'www.palace114.com', 48.8547216, 2.3859449, 'https://mapbuildr.com/assets/img/markers/solid-pin-yellow.png']
+	['Palace 114', 'Hotel Restaurant', '+33143434343', 'mickmick54@gmail.com', 'www.palace114.com', 48.8547216, 2.3859449, 'https://mapbuildr.com/assets/img/markers/solid-pin-yellow.png']
 	        ];
 	        for (i = 0; i < locations.length; i++) {
 				if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
@@ -57,7 +57,7 @@
 	}
 	</script>
 	<style>
-	    #MAPMarieClaire {
+	    #MAPtest {
 	        height:740px;
 	        width:1580px;
 	        border: 0;
@@ -77,7 +77,7 @@
 	</head>
 
 	<body>
-		<div id='MAPMarieClaire'></div>
+		<div id='MAPtest'></div>
 	</body>
 
 </html>
