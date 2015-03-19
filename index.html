@@ -1,84 +1,93 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  	<meta charset="utf-8">
-  	<title>pagetest</title>
-  	<link rel="stylesheet" href="style.css">
+	<head>
+	  	<meta charset="utf-8">
+	  	<title>pagetest</title>
+	  	<link rel="stylesheet" href="style.css">
 
-	<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script> 
-	<script> 
-	    google.maps.event.addDomListener(window, 'load', init);
-	    var map;
-	    function init() {
-	        var mapOptions = {
-	            center: new google.maps.LatLng(48.589325,8.219603),
-	            zoom: 5,
-	            zoomControl: true,
-	            zoomControlOptions: {
-	                style: google.maps.ZoomControlStyle.DEFAULT,
-	            },
-	            disableDoubleClickZoom: true,
-	            mapTypeControl: false,
-	            scaleControl: true,
-	            scrollwheel: true,
-	            panControl: true,
-	            streetViewControl: false,
-	            draggable : true,
-	            overviewMapControl: true,
-	            overviewMapControlOptions: {
-	                opened: true,
-	            },
-	            mapTypeId: google.maps.MapTypeId.ROADMAP,
-	            styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
-	        }
-	        var mapElement = document.getElementById('MAPtest');
-	        var map = new google.maps.Map(mapElement, mapOptions);
-	        var locations = [
-	['Palace 114', 'Hotel de charme', '+33143434343', 'mickmick54@gmail.com', 'www.palace114.com', 48.8547216, 2.3859449, 'https://mapbuildr.com/assets/img/markers/solid-pin-yellow.png']
-	        ];
-	        for (i = 0; i < locations.length; i++) {
-				if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
-				if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
-				if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
-	           if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
-	           if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
-	            marker = new google.maps.Marker({
-	                icon: markericon,
-	                position: new google.maps.LatLng(locations[i][5], locations[i][6]),
-	                map: map,
-	                title: locations[i][0],
-	                desc: description,
-	                tel: telephone,
-	                email: email,
-	                web: web
-	            });
-	link = '';     }
+			<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script> 
+			<script> 
+			    google.maps.event.addDomListener(window, 'load', init);
+			    var map;
+			    function init() {
+			        var mapOptions = {
+			            center: new google.maps.LatLng(48.889325,2.619603),
+			            zoom: 7,
+			            zoomControl: true,
+			            zoomControlOptions: {
+			                style: google.maps.ZoomControlStyle.DEFAULT,
+			            },
+			            disableDoubleClickZoom: true,
+			            mapTypeControl: false,
+			            scaleControl: true,
+			            scrollwheel: true,
+			            panControl: true,
+			            streetViewControl: false,
+			            draggable : true,
+			            overviewMapControl: true,
+			            overviewMapControlOptions: {
+			                opened: true,
+			            },
+			            mapTypeId: google.maps.MapTypeId.ROADMAP,
+			            styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],
+			        }
+					function CenterControl(controlDiv, map) {
 
-	}
-	</script>
-	<style>
-	    #MAPtest {
-	        height:740px;
-	        width:1580px;
-	        border: 0;
-	    }
-	    .gm-style-iw * {
-	        display: block;
-	        width: 100%;
-	    }
-	    .gm-style-iw h4, .gm-style-iw p {
-	        margin: 0;
-	        padding: 0;
-	    }
-	    .gm-style-iw a {
-	        color: #4272db;
-	    }
-	</style>
+					// Set CSS for the control border
+					var controlUI = document.createElement('MAPtest');
+					controlUI.style.backgroundColor = '#fff';
+					controlUI.style.border = '0px solid #fff';
+					controlDiv.appendChild(controlUI);
+				}
+
+			        var mapElement = document.getElementById('MAPtest');
+			        var map = new google.maps.Map(mapElement, mapOptions);
+			        var locations = [
+					['Palace 114', 'Hotel de charme', '+33143434343', 'mickmick54@gmail.com', 'www.palace114.com', 48.8547216, 2.3859449, 'https://mapbuildr.com/assets/img/markers/solid-pin-yellow.png']
+				        ];
+				        for (i = 0; i < locations.length; i++) {
+							if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
+							if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
+							if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
+				            if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
+				            if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
+				            marker = new google.maps.Marker({
+				                icon: markericon,
+				                position: new google.maps.LatLng(locations[i][5], locations[i][6]),
+				                map: map,
+				                title: locations[i][0],
+				                desc: description,
+				                tel: telephone,
+				                email: email,
+				                web: web
+				            });
+							link = '';}
+
+				}
+			</script>
+
+			<style>
+			    #MAPtest {
+			        height:740px;
+			        width:1580px;
+			    }
+			    .gm-style-iw * {
+			        display: block;
+			        width: 100%;
+			    }
+			    .gm-style-iw h4, .gm-style-iw p {
+			        margin: 0;
+			        padding: 0;
+			    }
+			    .gm-style-iw a {
+			        color: #4272db;
+			    }
+			</style>
 	</head>
 
-	<body>
-		<div id='MAPtest'></div>
-	</body>
+		<body>
+			<div id='MAPtest'></div>
+		</body>
 
 </html>
 
