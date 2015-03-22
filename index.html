@@ -8,7 +8,7 @@
 			<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script> 
 			<script> 
 			    google.maps.event.addDomListener(window, 'load', init);
-			    var map;setMarkers(map, villes);
+			    var map;
 			    function init() {
 			        var mapOptions = {
 			            center: new google.maps.LatLng(48.889325,2.619603),
@@ -63,90 +63,49 @@
 				            });
 							link = '';}
 
-				    var styles = {
-				        'monTheme': [
-				        {
-				            featureType: 'all',
-				            stylers: [
-				                {saturation: -100},
-				                {gamma: 0.50}
-				            ]
-				        }
-				    ]};
-					
-				    var citymap = {};
-				    citymap['strasbourg'] = {
-				        center: new google.maps.LatLng(48.583148,7.747882),
-				        population: 271708
-				    };
-				    citymap['paris'] = {
-				        center: new google.maps.LatLng(48.856614,2.352222),
-				        population: 2234105
-				    };
-				    citymap['lyon'] = {
-				        center: new google.maps.LatLng(45.764043,4.835659),
-				        population: 479803
-				    }
 
-				    var map = new google.maps.Map(document.getElementById('MAPtest'), mapOptions);
+					var polyCoords = [
+				        new google.maps.LatLng(47.495308,-2.787781),
+				        new google.maps.LatLng(47.450751,-2.469177),
+				        new google.maps.LatLng(47.5287,-2.101135),
+				        new google.maps.LatLng(47.617643,-2.106628),
+				        new google.maps.LatLng(47.669457,-2.013245),
+				        new google.maps.LatLng(47.769238,-1.595764),
+				        new google.maps.LatLng(47.780313,-1.238708),
+				        new google.maps.LatLng(48.498772,-1.062927),
+				        new google.maps.LatLng(48.600588,-1.826477),
+				        new google.maps.LatLng(48.65142,-2.320862),
+				        new google.maps.LatLng(48.506051,-2.677917),
+				        new google.maps.LatLng(48.854234,-3.144836),
+				        new google.maps.LatLng(48.673189,-3.589783),
+				        new google.maps.LatLng(48.713075,-4.007263),
+				        new google.maps.LatLng(48.582422,-4.743347),
+				        new google.maps.LatLng(48.502411,-4.737854),
+				        new google.maps.LatLng(48.115133,-4.265442),
+				        new google.maps.LatLng(48.034387,-4.688416),
+				        new google.maps.LatLng(47.802456,-4.320374),
+				        new google.maps.LatLng(47.876197,-3.952332)
+    				];
 
-			        for (var city in citymap) {
-			        var populationOptions = {
-			            strokeColor: '#FF0000',
-			            strokeOpacity: 0.8,
-			            strokeWeight: 2,
-			            fillColor: '#FF0000',
-			            fillOpacity: 0.35,
-			            map: map,
-			            center: citymap[city].center,
-			            radius: citymap[city].population / 20
-			        };
-			        var cityCircle = new google.maps.Circle(populationOptions);
-			    	}
+				    var poly = new google.maps.Polygon({
+				        paths:polyCoords,
+				        strokeColor: "#FF0000",
+				        strokeOpacity: 0.8,
+				        strokeWeight: 2,
+				        fillColor: "#FF0000",
+				        fillOpacity: 0.35
+				    });
+				    poly.setMap(map);
 
-			    	var villes = [
-				    ['Strasbourg', 48.583148,7.747882],
-				    ['Paris', 48.856614,2.352222],
-				    ['Lyon', 45.764043,4.835659]
-					];
-
-					function setMarkers(map, locations) {
-				    var image = 'factory.png';
-				    for (var i = 0; i < locations.length; i++) {
-				        var villes = locations[i];
-				        var myLatLng = new google.maps.LatLng(villes[1], villes[2]);
-				        var infoWindow = new google.maps.InfoWindow();
-				        var marker = new google.maps.Marker({
-				            position: myLatLng,
-				            map: map,
-				            animation: google.maps.Animation.DROP,
-				            icon: image
-				        });
-				        (function(i) {
-				            google.maps.event.addListener(marker, "click", function() {
-				                var villes = locations[i];
-				                infoWindow.close();
-				                infoWindow.setContent(
-				                    "<div id='boxcontent' style='font-family:Calibri'><strong style='color:green'>"
-				                    + villes[0] +
-				                    "</strong><br /><span style='font-size:12px;color:#333'>Ceci est un test.</span></div>"
-				                );
-				                infoWindow.open(map, this);
-				            });
-				        })(i);
-				    }
-				}
-
-				}
+			}
 			</script>
 
 			<style>
 			    #MAPtest {
-			        height:740px;
-			        width:1580px;
+			        height:100%;
+			        width:100%;
 			    }
 			    .gm-style-iw * {
-			        display: block;
 			        width: 100%;
 			    }
 			    .gm-style-iw h4, .gm-style-iw p {
@@ -156,10 +115,16 @@
 			    .gm-style-iw a {
 			        color: #4272db;
 			    }
+			    html, body {
+		            height: 100%;
+		            margin: 0;
+		            padding: 0;
+			    }    
+        }
 			</style>
 	</head>
 
-		<body>
+		<body onload="init()">
 			<div id='MAPtest'></div>
 		</body>
 
